@@ -1,0 +1,38 @@
+.app-board{
+    padding: 40px;
+    height: 780px;
+    width: 700px;
+    margin: auto;
+    margin-top: 40px;
+    background: lightcyan;
+}
+
+.app-instruments{
+    width: 100%;
+    height: 80px;
+    background: lightgreen;
+}
+
+.game-board{
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 700px;
+    background: lightpink;
+}
+
+.game-line{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-evenly;
+}
+
+.game-cell{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    background: lightskyblue;
+}

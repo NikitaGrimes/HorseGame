@@ -4,8 +4,14 @@
   </div>
   <div class="game-board">
       <div class="game-line" *ngFor="let line of cells">
-        <div class="game-cell" *ngFor="let cell of line" (click)="onClick(cell.lineNumber, cell.cellNumber)">
-
+        <div class="game-cell" *ngFor="let cell of line">
+          <div class="game-item" (click)="onClick(cell)" [ngClass]="{'game-item-current': cell.isCurrent, 
+          'game-item-checked': cell.isChecked, 'game-item-can-move': cell.isCanMove, 
+          'game-item-default': !cell.isCurrent && !cell.isChecked && !cell.isCanMove}">
+          <p class="move-number" *ngIf="cell.moveNumber">
+            {{cell.moveNumber}}
+          </p>
+          </div>
         </div>
       </div>
   </div>

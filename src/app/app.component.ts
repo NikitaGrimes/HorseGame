@@ -7,31 +7,36 @@ import { GameCell } from './game-cell';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  cellNumber: number = 9;
+  cellNumber: number = 5;
   gameBoardSize: number = 700;
   cells: GameCell[][] = [];
   moveableCells: GameCell[] = [];
-  prevMove?: GameCell = undefined;
-  currentMove?: GameCell = undefined;
+  isFirstMove: boolean = true;
+  currentCell?: GameCell;
+  movesCell: GameCell[] = [];
 
   constructor(){
-    this.cells = this.initialGameBoard();
+    this.cells = this.initialGameBoard(this.cellNumber);
   }
 
-  logging(cell: GameCell): void{
+  logging(cell?: GameCell): void{
     console.log(cell);
   }
 
-  initialGameBoard(): GameCell[][]{
-    return new Array<GameCell[]>(this.cellNumber)
-    .fill(new Array<GameCell>(this.cellNumber)
+  initialGameBoard(boardSize: number): GameCell[][]{
+    this.isFirstMove = true;
+    this.movesCell = [];
+    return new Array<GameCell[]>(boardSize)
+    .fill(new Array<GameCell>(boardSize)
       .fill(new GameCell(0, 0)))
     .map((line, i) => line.map((cell, j) => new GameCell(i, j)));
   }
 
-  setFirstMove(): void{
-    if(!this.currentMove)
+  setAfterFirstMove(): void{
+    if(this.isFirstMove)
       this.cells.forEach(lines => lines.forEach(cell => cell.setDefault()));
+      
+    this.isFirstMove = false;
   }
 
   setMoveableCells(currentCell: GameCell): void{
@@ -49,21 +54,40 @@ export class AppComponent{
   }
 
   makingMove(cell: GameCell): void{
-    this.prevMove = this.currentMove;
-    this.currentMove = cell;
+    if(this.currentCell) {
+      this.currentCell.setCheacked();
+      this.movesCell.push(this.currentCell);
+    }
+
     cell.setCurrent();
-    if(this.prevMove)
-      this.prevMove.setCheacked();
+    cell.setMoveNumber();
+    this.currentCell = cell;
   }
 
-  onClick(newcurrentCell: GameCell):void{
-    this.logging(newcurrentCell);
+  onCellClick(newcurrentCell: GameCell):void{
     if(!newcurrentCell.isCanMove)
       return;
 
-    this.setFirstMove();
+    this.setAfterFirstMove();
     this.clearMoveableCells();
     this.makingMove(newcurrentCell);
     this.setMoveableCells(newcurrentCell);
+  }
+
+  onStepBack(): void{
+    if(this.movesCell.length === 0)
+      this.cells = this.initialGameBoard(this.cellNumber);
+    
+    this.clearMoveableCells();
+    this.currentCell = this.currentCell?.cancelMove(this.movesCell.pop());
+    if(this.currentCell)
+      this.setMoveableCells(this.currentCell);
+  }
+
+  onReset(): void{
+    this.clearMoveableCells();
+    this.currentCell = undefined;
+    this.cells = this.initialGameBoard(this.cellNumber);
+    GameCell.reset();
   }
 }

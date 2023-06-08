@@ -30,12 +30,16 @@ export class GameCell {
     setCurrent(): void{
         this.isCurrent = true;
         this.isChecked = this.isCanMove = false;
+    }
+
+    setMoveNumber(): void{
         GameCell._movesNumber++;
         this.moveNumber = GameCell._movesNumber;
     }
 
     setDefault(): void{
         this.isCurrent = this.isCanMove = this.isChecked = false;
+        this.moveNumber = undefined;
     }
 
     checkMoveable(line: number, cell: number): boolean{
@@ -44,5 +48,14 @@ export class GameCell {
             .some(move => move[0] === line && move[1] === cell);
     }
 
+    cancelMove(prevCell?: GameCell): GameCell | undefined{
+        this.setDefault();
+        GameCell._movesNumber--;
+        prevCell?.setCurrent();
+        return prevCell;
+    }
 
+    static reset(): void{
+        this._movesNumber = 0;
+    }
 }

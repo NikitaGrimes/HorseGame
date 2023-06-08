@@ -1,1 +1,31 @@
-<p>end-game works!</p>
+<div class="blurer">
+    <div class="message" *ngIf="finishEvent">
+        <div class="header">
+            <p class="header-message">{{finishEvent}}</p>
+            <button class="close-button" (click) = "back()">X</button>
+        </div>
+        <div class="body-message" *ngIf="finishEvent === allFinishEvents.Win">
+            <p class="message-text">You are Winer</p>
+            <button class="restart-button" (click) = "restart()">
+                Restart
+            </button>
+        </div>
+        <div class="body-message" *ngIf="finishEvent === allFinishEvents.Lose">
+            <p class="message-text">You are Loser</p>
+            <button class="restart-button" (click) = "restart()">
+                Restart
+            </button>
+        </div>
+        <div class="body-message" *ngIf="finishEvent === allFinishEvents.Restart">
+            <p class="message-text">Are you shure about that?</p>
+            <div class="confirmer">
+                <button class="success-button" (click) = "restart()">
+                    Yes
+                </button>
+                <button class="danger-button" (click) = "back()">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

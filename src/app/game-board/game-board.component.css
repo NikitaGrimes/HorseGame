@@ -16,7 +16,6 @@
 }
 
 .button-instruments{
-    margin-right: 40px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -96,4 +95,22 @@
     margin-bottom: auto;
     text-align: center;
     font-size: 18px;
+}
+
+.back-button{
+    margin-right: 40px;
+    border: none;
+    background: blue;
+    color: antiquewhite;
+    font-size: 24px;
+    width: 160px;
+}
+
+.reset-button{
+    margin-right: 40px;
+    border: none;
+    background: orange;
+    color: antiquewhite;
+    font-size: 24px;
+    width: 160px;
 }

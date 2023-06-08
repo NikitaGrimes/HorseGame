@@ -4,5 +4,6 @@
     height: 100%;
     left: 0px;
     top: 0px;
-    background: purple;
+    background: rgb(214,111,189);
+    background: linear-gradient(60deg, rgba(214,111,189,1) 0%, rgba(47,229,233,1) 44%, rgba(185,255,0,1) 100%);
 }

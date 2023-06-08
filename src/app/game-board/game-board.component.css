@@ -1,8 +1,10 @@
 .app-board{
     height: 780px;
     width: 700px;
-    background: lightcyan;
+    background: linear-gradient(111.49deg, rgba(255, 255, 255, 0.4) -8.95%, rgba(255, 255, 255, 0.01) 114%);
+    border-radius: 25px;
     padding: 40px;
+    padding-top: 20px;
     margin: auto;
     margin-top: 40px;
 }
@@ -10,7 +12,6 @@
 .app-instruments{
     width: 100%;
     height: 80px;
-    background: lightgreen;
     display: flex;
     justify-content: space-between;
 }
@@ -18,6 +19,60 @@
 .button-instruments{
     margin-top: auto;
     margin-bottom: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.game-text{
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-style: normal;
+    text-shadow: 2.07958px 0px 6.23875px rgba(0, 0, 0, 0.35), 0px 2.07958px 4.15917px rgba(0, 0, 0, 0.24), 0px 2.07958px 2.07958px rgba(0, 0, 0, 0.22), 0px 2.07958px 4.15917px rgba(0, 0, 0, 0.2);
+}
+
+.instrument-button{
+    width: 180px;
+    height: 40px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+    box-shadow: 0px 4.15917px 8.31834px rgba(0, 0, 0, 0.14), 0px 8.31834px 10.3979px rgba(0, 0, 0, 0.12), 0px 2.07958px 20.7958px rgba(0, 0, 0, 0.2);
+}
+
+.back-button{
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #265DC7;
+    background-blend-mode: overlay, normal;
+    margin-right: 30px;
+}
+
+.reset-button{
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #F96E03;
+    background-blend-mode: overlay, normal;
+    
+}
+
+.ligth-div{
+    position: relative;
+    top: -40px;
+    width: 180px;
+    height: 40px;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    mix-blend-mode: overlay;
+    opacity: 0.7;
+    transform: rotate(-180deg);
+}
+
+.dark-div{
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+    top: -20px;
+    width: 180px;
+    height: 20px;
+    background: #265DC7;
+    opacity: 0.5;
 }
 
 .cell-number-input{
@@ -25,24 +80,30 @@
     padding-left: 0px;
     font: inherit;
     box-sizing: content-box;
-    width: 55px;
+    width: 19px;
     background: transparent;
     border: none;
     outline: none;
 }
 
 .cell-sizer{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 28px;
-    margin-left: 40px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 72px;
     margin-top: auto;
     margin-bottom: auto;
+    color: #296399;
 }
 
 .game-board{
     width: 700px;
     height: 700px;
-    background: lightpink;
+    background: linear-gradient(180deg, #AAC2FF 0%, #C81BF1 100%);
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 10px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -62,29 +123,51 @@
     height: 100%;
     margin-left: 5px;
     margin-right: 5px;
+    background: linear-gradient(180deg, #FFFFFF , rgba(255, 255, 255, 0));
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.game-cell-can-move{
+    background: linear-gradient(180deg, rgba(237, 199, 255, 0.46) 0.89%, rgba(171, 119, 255, 0.74) 100.88%);
+    box-shadow: 0px 0px 38px rgba(158, 108, 255, 0.4), -21px 15px 50px rgba(29, 38, 70, 0.25);
+}
+
+.game-cell-can-move:hover{
+    background: linear-gradient(180deg, #CAA4FF -31.99%, rgba(255, 255, 255, 0.19) 113.98%);
+    box-shadow: 0px 11px 30px rgba(29, 38, 70, 0.6), inset 0px 8px 12px rgba(255, 255, 255, 0.59);
 }
 
 .game-item{
-    width: 100%;
-    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
     display: flex;
     justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
-.game-item-default{
-    background: lightskyblue;
-}
-
-.game-item-current {
-    background: blue;
+.game-item-current{
+    height: 75%;
+    width: 75%;
+    background: linear-gradient(180deg, #FFB800 0%, #FF1F00 100%);
+    box-shadow: 0px -5px 5px white;
 }
 
 .game-item-can-move{
-    background: green;
+    height: 30%;
+    width: 30%;
+    background: linear-gradient(180deg, #FFB800 0%, #FF1F00 100%);
+    box-shadow: 0px -3px 3px white;
 }
 
 .game-item-checked{
-    background: red;
+    height: 60%;
+    width: 60%;
+    background: linear-gradient(220.53deg, #B2F763 0%, #26AB3F 76.95%);
+    box-shadow: 6px -6px 16px rgba(178, 247, 99, 0.2);
 }
 
 .move-number{
@@ -94,23 +177,7 @@
     margin-top: auto;
     margin-bottom: auto;
     text-align: center;
-    font-size: 18px;
-}
-
-.back-button{
-    margin-right: 40px;
-    border: none;
-    background: blue;
-    color: antiquewhite;
+    font-weight: 700;
     font-size: 24px;
-    width: 160px;
-}
-
-.reset-button{
-    margin-right: 40px;
-    border: none;
-    background: orange;
-    color: antiquewhite;
-    font-size: 24px;
-    width: 160px;
+    
 }

@@ -1,22 +1,28 @@
 <div class="app-board">
     <div class="app-instruments">
       <div class="cell-sizer">
-        {{game.cellNumber}}x<input class="cell-number-input" type="number" [(ngModel)]="game.cellNumber" (input)="onResetCellNumber()"/>
+        {{game.cellNumber}}x{{game.cellNumber}}<input class="cell-number-input" type="number" [(ngModel)]="game.cellNumber" (input)="onResetCellNumber()"/>
       </div>
       <div class="button-instruments">
-        <button class="back-button" type="button" (click)="onStepBack()">Step back</button>
-        <button class="reset-button" type="button" (click)="onReset()">Restart</button>
+        <div>
+          <button class="game-text instrument-button back-button" type="button" (click)="onStepBack()">STEP BACK</button>
+          <div class="dark-div">
+          </div>
+        </div>
+        <div>
+          <button class="game-text instrument-button reset-button" type="button" (click)="onReset()">RESTART</button>
+        </div>
         <!--<button type="button" (click)="onWin()">Press to Win</button>
         <button type="button" (click)="onLose()">Press to Lose</button>-->
       </div>
     </div>
     <div class="game-board">
         <div class="game-line" *ngFor="let line of game.cells">
-          <div class="game-cell" *ngFor="let cell of line">
-            <div class="game-item" (click)="onCellClick(cell)" [ngClass]="{'game-item-current': cell.isCurrent, 
-            'game-item-checked': cell.isChecked, 'game-item-can-move': cell.isCanMove, 
-            'game-item-default': !cell.isCurrent && !cell.isChecked && !cell.isCanMove}">
-            <p class="move-number" *ngIf="cell.moveNumber">
+          <div class="game-cell" *ngFor="let cell of line" (click)="onCellClick(cell)" 
+          [ngClass]="{'game-cell-can-move': cell.isCanMove}">
+            <div class="game-item" [ngClass]="{'game-item-current': cell.isCurrent, 
+            'game-item-checked': cell.isChecked, 'game-item-can-move': cell.isCanMove}">
+            <p class="game-text move-number" *ngIf="cell.moveNumber">
               {{cell.moveNumber}}
             </p>
             </div>

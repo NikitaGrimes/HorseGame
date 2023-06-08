@@ -5,13 +5,13 @@
             <button class="close-button" (click) = "back()">X</button>
         </div>
         <div class="body-message" *ngIf="finishEvent === allFinishEvents.Win">
-            <p class="message-text">You are Winer</p>
+            <p class="message-text">You are Winer!</p>
             <button class="restart-button" (click) = "restart()">
                 Restart
             </button>
         </div>
         <div class="body-message" *ngIf="finishEvent === allFinishEvents.Lose">
-            <p class="message-text">You are Loser</p>
+            <p class="message-text">You are Loser!</p>
             <button class="restart-button" (click) = "restart()">
                 Restart
             </button>

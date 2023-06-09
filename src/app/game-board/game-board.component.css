@@ -1,12 +1,16 @@
 .app-board{
+    position: relative;
+    z-index: 2;
     height: 780px;
     width: 700px;
-    background: linear-gradient(111.49deg, rgba(255, 255, 255, 0.4) -8.95%, rgba(255, 255, 255, 0.01) 114%);
+    background: linear-gradient(111deg, rgba(255, 255, 255, 0.4) -8%, rgba(255, 255, 255, 0.01) 114%);
+    backdrop-filter: blur(10px);
     border-radius: 25px;
     padding: 40px;
     padding-top: 20px;
     margin: auto;
     margin-top: 40px;
+    box-shadow: 2px 2px 2px #fff9, -2px -2px 2px #fff9;
 }
 
 .app-instruments{
@@ -16,63 +20,32 @@
     justify-content: space-between;
 }
 
+.back-button{
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
+        linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
+    background-blend-mode: overlay, normal;
+    margin-right: 30px;
+    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.747), 0px 4px 8px rgba(0, 0, 0, 0.14), 
+        0px 8px 10px rgba(0, 0, 0, 0.12), 0px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button{
+    width: 180px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 24px;
+}
+
 .button-instruments{
+    position: relative;
     margin-top: auto;
     margin-bottom: auto;
     display: flex;
     flex-direction: row;
-}
-
-.game-text{
-    color: #FFFFFF;
-    font-family: 'Poppins';
-    font-style: normal;
-    text-shadow: 2.07958px 0px 6.23875px rgba(0, 0, 0, 0.35), 0px 2.07958px 4.15917px rgba(0, 0, 0, 0.24), 0px 2.07958px 2.07958px rgba(0, 0, 0, 0.22), 0px 2.07958px 4.15917px rgba(0, 0, 0, 0.2);
-}
-
-.instrument-button{
-    width: 180px;
-    height: 40px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 24px;
-    box-shadow: 0px 4.15917px 8.31834px rgba(0, 0, 0, 0.14), 0px 8.31834px 10.3979px rgba(0, 0, 0, 0.12), 0px 2.07958px 20.7958px rgba(0, 0, 0, 0.2);
-}
-
-.back-button{
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #265DC7;
-    background-blend-mode: overlay, normal;
-    margin-right: 30px;
-}
-
-.reset-button{
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #F96E03;
-    background-blend-mode: overlay, normal;
-    
-}
-
-.ligth-div{
-    position: relative;
-    top: -40px;
-    width: 180px;
-    height: 40px;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-    opacity: 0.7;
-    transform: rotate(-180deg);
-}
-
-.dark-div{
-    border-radius: 0px 0px 10px 10px;
-    position: relative;
-    top: -20px;
-    width: 180px;
-    height: 20px;
-    background: #265DC7;
-    opacity: 0.5;
 }
 
 .cell-number-input{
@@ -87,17 +60,62 @@
 }
 
 .cell-sizer{
-    font-family: 'Poppins';
-    font-style: normal;
+    font-family: "Calibri";
     font-weight: 700;
     font-size: 48px;
     line-height: 72px;
     margin-top: auto;
     margin-bottom: auto;
-    color: #296399;
+    background-image: linear-gradient(180deg, #296399, #29639988 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.cell-sizer-button-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 100px;
+}
+
+.arrow{
+    position: absolute;
+    top: -10px;
+    left: -2px;
+}
+
+.cell-sizer-button{
+    position: relative;
+    border: none;
+    background: transparent;
+    height: 38px;
+    margin: 0px;
+    padding: 0px;
+    width: 38px;
+    font-size: 42px;
+    font-weight: 900;
+    color: rgba(38,82,199,1);
+    text-shadow: 3px 3px 10px rgba(38,82,199,0.5), -3px -3px 10px rgba(38,82,199,0.5);
+    justify-content: center;
+}
+
+.cell-sizer-button:hover{
+    color: rgb(82, 140, 255);
+    text-shadow: 3px 3px 15px rgba(82, 140, 255, 1), -3px -3px 15px rgba(82, 140, 255, 1);
+}
+
+.inc-button{
+
+}
+
+.dec-button{
 }
 
 .game-board{
+    position: relative;
     width: 700px;
     height: 700px;
     background: linear-gradient(180deg, #AAC2FF 0%, #C81BF1 100%);
@@ -107,6 +125,34 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
+    box-shadow: -1px 4px 4px #0005;
+}
+
+.game-cell{
+    width: 200px;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: linear-gradient(180deg, #fffb , #fff2);
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px -2px 1px #fff, 1px 0px 1px #fff4, -1px 0px 1px #fff4;
+}
+
+.game-cell:hover{
+    box-shadow:  0px 5px 10px rgba(29, 38, 70, 0.6), inset 0px 8px 12px rgba(255, 255, 255, 0.59);
+}
+
+.game-cell-can-move{
+    background: linear-gradient(180deg, rgba(237, 199, 255, 0.46) 0.89%, rgba(171, 119, 255, 0.74) 100.88%);
+    box-shadow: inherit, 0px 0px 38px rgba(158, 108, 255, 0.4), -21px 15px 50px rgba(29, 38, 70, 0.25);
+}
+
+.game-cell-can-move:hover{
+    background: linear-gradient(180deg, #fffb , #fff2);
+    transform: scale(1.07);
 }
 
 .game-line{
@@ -118,40 +164,17 @@
     margin-bottom: 5px;
 }
 
-.game-cell{
-    width: 200px;
-    height: 100%;
-    margin-left: 5px;
-    margin-right: 5px;
-    background: linear-gradient(180deg, #FFFFFF , rgba(255, 255, 255, 0));
-    border-radius: 25%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.game-cell-can-move{
-    background: linear-gradient(180deg, rgba(237, 199, 255, 0.46) 0.89%, rgba(171, 119, 255, 0.74) 100.88%);
-    box-shadow: 0px 0px 38px rgba(158, 108, 255, 0.4), -21px 15px 50px rgba(29, 38, 70, 0.25);
-}
-
-.game-cell-can-move:hover{
-    background: linear-gradient(180deg, #CAA4FF -31.99%, rgba(255, 255, 255, 0.19) 113.98%);
-    box-shadow: 0px 11px 30px rgba(29, 38, 70, 0.6), inset 0px 8px 12px rgba(255, 255, 255, 0.59);
-}
-
 .game-item{
     margin-top: auto;
     margin-bottom: auto;
     display: flex;
     justify-content: center;
     border-radius: 50%;
-    overflow: hidden;
 }
 
 .game-item-current{
-    height: 75%;
-    width: 75%;
+    height: 70%;
+    width: 70%;
     background: linear-gradient(180deg, #FFB800 0%, #FF1F00 100%);
     box-shadow: 0px -5px 5px white;
 }
@@ -170,6 +193,11 @@
     box-shadow: 6px -6px 16px rgba(178, 247, 99, 0.2);
 }
 
+.instruments{
+    display: flex;
+    justify-content: space-between;
+}
+
 .move-number{
     height: auto;
     color: aliceblue;
@@ -178,6 +206,46 @@
     margin-bottom: auto;
     text-align: center;
     font-weight: 700;
-    font-size: 24px;
-    
+    font-size: 18px;
+}
+
+.light-on-button{
+    position: absolute;
+    height: 40px;
+    width: 180px;
+    overflow: hidden;
+}
+
+.light-on-button:hover{
+    overflow: visible;
+}
+
+.upper-light-on-button{
+    position: absolute;
+    width: 180px;
+    height: 20px;
+    top: -10px;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    mix-blend-mode: overlay;
+    opacity: 0.7;
+    transform: rotate(-180deg);
+}
+
+.lower-light-on-button{
+    position: absolute;
+    width: 180px;
+    height: 40px;
+    top: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    mix-blend-mode: overlay;
+    opacity: 0.7;
+    transform: rotate(-180deg);
+}
+
+.reset-button{
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
+        linear-gradient(180deg, rgba(249,110,3,1) 0%, rgba(249,110,3,1) 49%, rgba(249,97,3,1) 50%, rgba(249,97,3,1) 100%);
+    background-blend-mode: overlay, normal;
+    box-shadow: 0px 3px 0px rgba(249, 110, 3, 0.747), 0px 4px 8px rgba(0, 0, 0, 0.14),
+        0px 8.31834px 10.3979px rgba(0, 0, 0, 0.12), 0px 2.07958px 20.7958px rgba(0, 0, 0, 0.2);
 }

@@ -9,7 +9,7 @@ import { Game } from '../game';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent {
-  game: Game = new Game(5);
+  game: Game = new Game(10);
   @Output() openEndGame = new EventEmitter<FinishEvents>();
 
   onCellClick(newcurrentCell: GameCell):void{
@@ -41,5 +41,21 @@ export class GameBoardComponent {
 
   onLose(): void{
     this.openEndGame.emit(FinishEvents.Lose);
+  }
+
+  incSize(): void{
+    if (this.game.cellNumber + 1 > Game.MAX_CELL_SIZE)
+      return;
+    
+    this.game.cellNumber++;
+    this.onResetCellNumber();
+  }
+
+  decSize(): void{
+    if (this.game.cellNumber - 1 < Game.MIN_CELL_SIZE)
+      return;
+    
+    this.game.cellNumber--;
+    this.onResetCellNumber();
   }
 }

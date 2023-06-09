@@ -1,19 +1,35 @@
 <div class="app-board">
     <div class="app-instruments">
       <div class="cell-sizer">
-        {{game.cellNumber}}x{{game.cellNumber}}<input class="cell-number-input" type="number" [(ngModel)]="game.cellNumber" (input)="onResetCellNumber()"/>
+        {{game.cellNumber}}x{{game.cellNumber}}<!--<input class="cell-number-input" type="number" [(ngModel)]="game.cellNumber" (input)="onResetCellNumber()"/>-->
       </div>
-      <div class="button-instruments">
-        <div>
-          <button class="game-text instrument-button back-button" type="button" (click)="onStepBack()">STEP BACK</button>
-          <div class="dark-div">
+      <div class="instruments">
+        <div class="cell-sizer-button-container">
+          <button class="cell-sizer-button inc-button" (click)="incSize()"><span class="arrow">&#9650;</span></button>
+          <button class="cell-sizer-button dec-button" (click)="decSize()"><span class="arrow">&#9660;</span></button>
+        </div>
+        <div class="button-instruments">
+          <div>
+            <div class="light-on-button"  (click)="onStepBack()">
+              <div class="upper-light-on-button">
+              </div>
+              <div class="lower-light-on-button">
+              </div>
+            </div>
+            <button class="button text back-button" type="button">STEP BACK</button>
           </div>
+          <div>
+            <div class="light-on-button"  (click)="onReset()">
+              <div class="upper-light-on-button">
+              </div>
+              <div class="lower-light-on-button">
+              </div>
+            </div>
+            <button class="button text reset-button" type="button">RESTART</button>
+          </div>
+          <!--<button type="button" (click)="onWin()">Press to Win</button>
+          <button type="button" (click)="onLose()">Press to Lose</button>-->
         </div>
-        <div>
-          <button class="game-text instrument-button reset-button" type="button" (click)="onReset()">RESTART</button>
-        </div>
-        <!--<button type="button" (click)="onWin()">Press to Win</button>
-        <button type="button" (click)="onLose()">Press to Lose</button>-->
       </div>
     </div>
     <div class="game-board">
@@ -22,7 +38,7 @@
           [ngClass]="{'game-cell-can-move': cell.isCanMove}">
             <div class="game-item" [ngClass]="{'game-item-current': cell.isCurrent, 
             'game-item-checked': cell.isChecked, 'game-item-can-move': cell.isCanMove}">
-            <p class="game-text move-number" *ngIf="cell.moveNumber">
+            <p class="text move-number" *ngIf="cell.moveNumber">
               {{cell.moveNumber}}
             </p>
             </div>

@@ -1,0 +1,22 @@
+.circle1{
+    position: fixed;
+    z-index: 1;
+    width: 350px;
+    height: 350px;
+    left: 15%;
+    top: 5%;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #FC00FF 0%, #00DBDE 100%);
+    transform: rotate(-105deg);
+}
+
+.circle2{
+    position: fixed;
+    z-index: 1;
+    width: 310px;
+    height: 310px;
+    left: 65%;
+    top: 65%;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #E65C00 0%, #F9D423 100%);
+}

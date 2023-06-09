@@ -1,5 +1,5 @@
 export enum FinishEvents { 
     Win = "CONGRATS!",
-    Lose = "SORRY.",
+    Lose = "SORRY!",
     Restart = "RESTART"
 }

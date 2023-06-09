@@ -7,6 +7,8 @@ export class Game {
     isFirstMove: boolean = true;
     currentCell?: GameCell;
     movesCell: GameCell[] = [];
+    static readonly MAX_CELL_SIZE: number = 20;
+    static readonly MIN_CELL_SIZE: number = 1;
 
     constructor(public cellNumber: number){
       this.cells = this.initialGameBoard();

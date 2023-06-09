@@ -1,31 +1,72 @@
 <div class="blurer">
     <div class="message" *ngIf="finishEvent">
         <div class="header">
-            <p class="header-message">{{finishEvent}}</p>
-            <button class="close-button" (click) = "back()">X</button>
+            <p class="header-message text">{{finishEvent}}</p>
+            <div class="close-button-container">
+                <button class="close-button" (click) = "back()">X</button>
+            </div>
         </div>
-        <div class="body-message" *ngIf="finishEvent === allFinishEvents.Win">
-            <p class="message-text">You are Winer!</p>
-            <button class="restart-button" (click) = "restart()">
-                Restart
-            </button>
+        <div class="double-lighter-container">
+            <div class="short-lighter">
+            </div>
+            <div class="medium-lighter">
+            </div>
         </div>
-        <div class="body-message" *ngIf="finishEvent === allFinishEvents.Lose">
-            <p class="message-text">You are Loser!</p>
-            <button class="restart-button" (click) = "restart()">
-                Restart
-            </button>
-        </div>
-        <div class="body-message" *ngIf="finishEvent === allFinishEvents.Restart">
-            <p class="message-text">Are you shure about that?</p>
-            <div class="confirmer">
-                <button class="success-button" (click) = "restart()">
-                    Yes
-                </button>
-                <button class="danger-button" (click) = "back()">
-                    No
+        <div class="body-message">
+            <div class="lighter-body">
+                <div class="upper-lighter-body">
+                </div>
+                <div class="left-lighter-body">
+                </div>
+                <div class="right-lighter-body">
+                </div>
+            </div>
+            <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
+            <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>
+            <div class="button-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
+                <div class="light-on-button" (click) = "restart()">
+                  <div class="upper-light-on-button">
+                  </div>
+                  <div class="lower-light-on-button">
+                  </div>
+                </div>
+                <button class="button text restart-button">
+                    RESTART
                 </button>
             </div>
+            <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Restart">Are you shure?</p>
+            <div class="confirmer" *ngIf="finishEvent === allFinishEvents.Restart">
+                <div>
+                    <div class="light-on-button" (click) = "restart()">
+                        <div class="upper-light-on-button">
+                        </div>
+                        <div class="lower-light-on-button">
+                        </div>
+                    </div>
+                    <button class="button text success-button">
+                        YES
+                    </button>
+                </div>
+                <div>
+                    <div class="light-on-button" (click) = "back()">
+                        <div class="upper-light-on-button">
+                        </div>
+                        <div class="lower-light-on-button">
+                        </div>
+                    </div>
+                    <button class="button text danger-button">
+                        NO
+                    </button>
+                </div>
+            </div>
+            <div class="bottom-large-lighter">
+            </div>
+        </div>
+        <div class="bottom-lighter-container">
+            <div class="message-lighter">
+            </div>
+        </div>
+        <div class="bottom-medium-lighet">
         </div>
     </div>
 </div>

@@ -280,3 +280,25 @@
     box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.747), 0px 4px 8px rgba(0, 0, 0, 0.14), 
         0px 8px 10px rgba(0, 0, 0, 0.12), 0px 2px 20px rgba(0, 0, 0, 0.2);
 }
+
+.image-container{
+
+}
+
+.smile{
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 100%;
+    background-image: url(images/laugh.svg);
+}
+
+.bored{
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 100%;
+    background-image: url(images/bored.svg);
+}

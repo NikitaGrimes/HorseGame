@@ -1,7 +1,7 @@
 <div class="app-board">
     <div class="app-instruments">
       <div class="cell-sizer">
-        {{game.cellNumber}}x{{game.cellNumber}}<!--<input class="cell-number-input" type="number" [(ngModel)]="game.cellNumber" (input)="onResetCellNumber()"/>-->
+        {{game.cellNumber}}x{{game.cellNumber}}
       </div>
       <div class="instruments">
         <div class="cell-sizer-button-container">
@@ -27,8 +27,8 @@
             </div>
             <button class="button text reset-button" type="button">RESTART</button>
           </div>
-          <!--<button type="button" (click)="onWin()">Press to Win</button>
-          <button type="button" (click)="onLose()">Press to Lose</button>-->
+          <button type="button" (click)="onWin()">Press to Win</button>
+          <button type="button" (click)="onLose()">Press to Lose</button>
         </div>
       </div>
     </div>

@@ -21,6 +21,12 @@
                 <div class="right-lighter-body">
                 </div>
             </div>
+            <div class="image-container">
+                <div class="smile" *ngIf="finishEvent === allFinishEvents.Win">
+                </div>
+                <div class="bored" *ngIf="finishEvent === allFinishEvents.Lose">
+                </div>
+            </div>
             <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
             <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>
             <div class="button-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">

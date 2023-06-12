@@ -1,30 +1,25 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { GameCell } from '../game-cell';
-import { FinishEvents } from '../finish-events';
-import { Game } from '../game';
+import { GameCell } from '../modules/game-cell';
+import { FinishEvents } from '../modules/finish-events';
+import { Game } from '../modules/game';
 
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
-  styleUrls: ['./game-board.component.css']
+  styleUrls: ['./game-board.component.scss']
 })
 export class GameBoardComponent {
-  game: Game = new Game(10);
+  @Input() game: Game = new Game(10);
   @Output() openEndGame = new EventEmitter<FinishEvents>();
 
-  onCellClick(newcurrentCell: GameCell):void{
-    if(!newcurrentCell.isCanMove)
-      return;
-
-    this.game.setAfterFirstMove();
-    this.game.clearMoveableCells();
-    this.game.makingMove(newcurrentCell);
-    this.game.setMoveableCells(newcurrentCell);
-    this.openEndGame.emit(this.game.checkResult());
+  onMakeMove(newCurrentCell: GameCell):void{
+    let result: FinishEvents | undefined = this.game.makeMove(newCurrentCell)
+    if(result)
+      this.openEndGame.emit(result);
   }
 
   onStepBack(): void{
-    this.game.stepBack();
+    this.game.makeStepBack();
   }
 
   onReset(): void{

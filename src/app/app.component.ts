@@ -1,15 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { FinishEvents } from './finish-events';
-import { GameBoardComponent } from './game-board/game-board.component';
+import { Component } from '@angular/core';
+import { FinishEvents } from './modules/finish-events';
+import { Game } from './modules/game';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent{
   finishEvent?: FinishEvents;
-  @ViewChild('gameBoard') gameBoard?: GameBoardComponent;
+  game: Game = new Game(10);
   
   openEndGame(event: FinishEvents): void{
     this.finishEvent = event;
@@ -18,6 +18,6 @@ export class AppComponent{
   restartGame(isReset: boolean): void{
     this.finishEvent = undefined;
     if (isReset)
-      this.gameBoard?.game.reset();
+      this.game.reset();
   }
 }

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FinishEvents } from '../finish-events';
+import { FinishEvents } from '../modules/finish-events';
 
 @Component({
   selector: 'app-end-game',
   templateUrl: './end-game.component.html',
-  styleUrls: ['./end-game.component.css']
+  styleUrls: ['./end-game.component.scss']
 })
 export class EndGameComponent {
   @Input() finishEvent?: FinishEvents;
@@ -12,12 +12,10 @@ export class EndGameComponent {
   allFinishEvents = FinishEvents;
 
   restart(): void{
-    this.finishEvent = undefined;
     this.restartGame.emit(true);
   }
 
-  back(): void{
-    this.finishEvent = undefined;
+  return(): void{
     this.restartGame.emit(false);
   }
 }

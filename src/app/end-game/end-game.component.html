@@ -3,7 +3,9 @@
         <div class="header">
             <p class="header-message text">{{finishEvent}}</p>
             <div class="close-button-container">
-                <button class="close-button" (click) = "back()"></button>
+                <button class="close-button" (click) = "return()">
+                    <img class="close-button" src="assets/images/cross-no-shape.svg" />
+                </button>
             </div>
         </div>
         <div class="double-lighter-container">
@@ -21,52 +23,30 @@
                 <div class="right-lighter-body">
                 </div>
             </div>
-            <div class="image-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
-                <div class="smile" *ngIf="finishEvent === allFinishEvents.Win">
+            <div class="information">
+                <div class="image-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
+                    <img class="smile" src="assets/images/laugh.svg" *ngIf="finishEvent === allFinishEvents.Win"/>
+                    <img class="bored" src="assets/images/bored.svg" *ngIf="finishEvent === allFinishEvents.Lose"/>
                 </div>
-                <div class="bored" *ngIf="finishEvent === allFinishEvents.Lose">
-                </div>
+                <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
+                <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>
+                <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Restart">Are you sure?</p>
             </div>
-            <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
-            <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>
             <div class="button-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
-                <div class="light-on-button" (click) = "restart()">
-                  <div class="upper-light-on-button">
-                  </div>
-                  <div class="lower-light-on-button">
-                  </div>
-                </div>
-                <button class="button text restart-button" *ngIf="finishEvent === allFinishEvents.Lose">
+                <button class="button text restart-button" *ngIf="finishEvent === allFinishEvents.Lose" (click) = "restart()">
                     TRY AGAIN
                 </button>
-                <button class="button text restart-button" *ngIf="finishEvent === allFinishEvents.Win">
+                <button class="button text restart-button" *ngIf="finishEvent === allFinishEvents.Win" (click) = "restart()">
                     RESTART
                 </button>
             </div>
-            <p class="message-text text" *ngIf="finishEvent === allFinishEvents.Restart">Are you shure?</p>
             <div class="confirmer" *ngIf="finishEvent === allFinishEvents.Restart">
-                <div>
-                    <div class="light-on-button" (click) = "restart()">
-                        <div class="upper-light-on-button">
-                        </div>
-                        <div class="lower-light-on-button">
-                        </div>
-                    </div>
-                    <button class="button text success-button">
-                        YES
-                    </button>
-                </div>
-                <div>
-                    <div class="light-on-button" (click) = "back()">
-                        <div class="upper-light-on-button">
-                        </div>
-                        <div class="lower-light-on-button">
-                        </div>
-                    </div>
-                    <button class="button text danger-button">
-                        NO
-                    </button>
-                </div>
+                <button class="button text success-button" (click) = "restart()">
+                    YES
+                </button>
+                <button class="button text danger-button" (click) = "return()">
+                    NO
+                </button>
             </div>
             <div class="bottom-large-lighter">
             </div>

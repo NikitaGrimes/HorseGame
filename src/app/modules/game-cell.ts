@@ -13,7 +13,7 @@ export class GameCell {
     private static _movesNumber: number = 0;
 
     constructor(public lineNumber: number, public cellNumber: number, public isChecked: boolean = false, 
-        public isCanMove: boolean = true, public isCurrent: boolean = false, public moveNumber?: number){
+        public isCanMove: boolean = false, public isCurrent: boolean = false, public moveNumber?: number){
 
     }
 
@@ -33,8 +33,7 @@ export class GameCell {
     }
 
     setMoveNumber(): void{
-        GameCell._movesNumber++;
-        this.moveNumber = GameCell._movesNumber;
+        this.moveNumber = ++GameCell._movesNumber;
     }
 
     setDefault(): void{
@@ -48,14 +47,12 @@ export class GameCell {
             .some(move => move[0] === line && move[1] === cell);
     }
 
-    cancelMove(prevCell?: GameCell): GameCell | undefined{
-        this.setDefault();
-        GameCell._movesNumber--;
-        prevCell?.setCurrent();
-        return prevCell;
-    }
-
     static reset(): void{
         this._movesNumber = 0;
+    }
+
+    static decrementMovesNumber(): void{
+        if (this._movesNumber)
+            --this._movesNumber;
     }
 }

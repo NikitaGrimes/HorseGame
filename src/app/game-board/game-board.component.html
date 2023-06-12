@@ -10,22 +10,10 @@
         </div>
         <div class="button-instruments">
           <div>
-            <div class="light-on-button"  (click)="onStepBack()">
-              <div class="upper-light-on-button">
-              </div>
-              <div class="lower-light-on-button">
-              </div>
-            </div>
-            <button class="button text back-button" type="button">STEP BACK</button>
+            <button class="button text back-button" type="button" (click)="onStepBack()">STEP BACK</button>
           </div>
           <div>
-            <div class="light-on-button"  (click)="onReset()">
-              <div class="upper-light-on-button">
-              </div>
-              <div class="lower-light-on-button">
-              </div>
-            </div>
-            <button class="button text reset-button" type="button">RESTART</button>
+            <button class="button text reset-button" type="button" (click)="onReset()">RESTART</button>
           </div>
           <!--<button type="button" (click)="onWin()">Press to Win</button>
           <button type="button" (click)="onLose()">Press to Lose</button>-->
@@ -34,7 +22,7 @@
     </div>
     <div class="game-board">
         <div class="game-line" *ngFor="let line of game.cells">
-          <div class="game-cell" *ngFor="let cell of line" (click)="onCellClick(cell)" 
+          <div class="game-cell" *ngFor="let cell of line" (click)="onMakeMove(cell)" 
           [ngClass]="{'game-cell-can-move': cell.isCanMove}">
             <div class="game-item" [ngClass]="{'game-item-current': cell.isCurrent, 
             'game-item-checked': cell.isChecked, 'game-item-can-move': cell.isCanMove}">

@@ -20,6 +20,12 @@
     justify-content: space-between;
 }
 
+.arrow{
+    position: absolute;
+    top: -10px;
+    left: -2px;
+}
+
 .back-button{
     background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
         linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
@@ -81,12 +87,6 @@
     margin-right: 100px;
 }
 
-.arrow{
-    position: absolute;
-    top: -10px;
-    left: -2px;
-}
-
 .cell-sizer-button{
     position: relative;
     border: none;
@@ -97,21 +97,14 @@
     width: 38px;
     font-size: 42px;
     font-weight: 900;
-    color: rgba(38,82,199,1);
-    text-shadow: 3px 3px 10px rgba(38,82,199,0.5), -3px -3px 10px rgba(38,82,199,0.5);
+    color: rgb(82, 140, 255);
+    text-shadow: 3px 3px 10px rgba(82, 140, 255, 0.5), -3px -3px 10px rgba(82, 140, 255, 0.5);
     justify-content: center;
 }
 
 .cell-sizer-button:hover{
-    color: rgb(82, 140, 255);
-    text-shadow: 3px 3px 15px rgba(82, 140, 255, 1), -3px -3px 15px rgba(82, 140, 255, 1);
-}
-
-.inc-button{
-
-}
-
-.dec-button{
+    color: rgb(113, 161, 255);
+    text-shadow: 3px 3px 15px rgb(113, 161, 255, 0.5), -3px -3px 15px rgba(113, 161, 255, 0.5);
 }
 
 .game-board{
@@ -214,10 +207,12 @@
     height: 40px;
     width: 180px;
     overflow: hidden;
+    opacity: 0.7;
 }
 
 .light-on-button:hover{
     overflow: visible;
+    opacity: 0.8;
 }
 
 .upper-light-on-button{
@@ -227,7 +222,7 @@
     top: -10px;
     background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
-    opacity: 0.7;
+    opacity: inherit;
     transform: rotate(-180deg);
 }
 
@@ -238,7 +233,7 @@
     top: 20px;
     background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
-    opacity: 0.7;
+    opacity: inherit;
     transform: rotate(-180deg);
 }
 

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { GameCell } from '../modules/game-cell';
-import { FinishEvents } from '../modules/finish-events';
-import { Game } from '../modules/game';
+import { GameCell } from '../models/game-cell';
+import { FinishEvents } from '../models/finish-events';
+import { Game } from '../models/game';
 
 @Component({
   selector: 'app-game-board',
@@ -12,45 +12,45 @@ export class GameBoardComponent {
   @Input() game: Game = new Game(10);
   @Output() openEndGame = new EventEmitter<FinishEvents>();
 
-  onMakeMove(newCurrentCell: GameCell):void{
+  makeMove(newCurrentCell: GameCell):void{
     let result: FinishEvents | undefined = this.game.makeMove(newCurrentCell)
     if(result)
       this.openEndGame.emit(result);
   }
 
-  onStepBack(): void{
+  makeStepBack(): void{
     this.game.makeStepBack();
   }
 
-  onReset(): void{
+  reset(): void{
     this.openEndGame.emit(FinishEvents.Restart);
   }
 
-  onResetCellNumber(): void{
+  resetCellNumber(): void{
     this.game.reset();
   }
 
-  onWin(): void{
+  win(): void{
     this.openEndGame.emit(FinishEvents.Win);
   }
 
-  onLose(): void{
+  lose(): void{
     this.openEndGame.emit(FinishEvents.Lose);
   }
 
-  incSize(): void{
+  incrementSize(): void{
     if (this.game.cellNumber + 1 > Game.MAX_CELL_SIZE)
       return;
     
     this.game.cellNumber++;
-    this.onResetCellNumber();
+    this.resetCellNumber();
   }
 
-  decSize(): void{
+  decrementSize(): void{
     if (this.game.cellNumber - 1 < Game.MIN_CELL_SIZE)
       return;
     
     this.game.cellNumber--;
-    this.onResetCellNumber();
+    this.resetCellNumber();
   }
 }

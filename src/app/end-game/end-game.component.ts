@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FinishEvents } from '../modules/finish-events';
+import { FinishEvents } from '../models/finish-events';
 
 @Component({
   selector: 'app-end-game',

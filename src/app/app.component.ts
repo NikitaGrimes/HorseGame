@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FinishEvents } from './modules/finish-events';
-import { Game } from './modules/game';
+import { FinishEvents } from './models/finish-events';
+import { Game } from './models/game';
 
 @Component({
   selector: 'app-root',

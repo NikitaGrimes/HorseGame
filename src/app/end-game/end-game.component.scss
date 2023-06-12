@@ -1,16 +1,25 @@
-.blurer{
+%lights-on-button{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: 0px;
+    opacity: 0.7;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    mix-blend-mode: overlay;
+}
+
+:host{
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 5;
     background: transparent;
     backdrop-filter: blur(10px);
+    display: block;
 }
 
-.message{
+.wraper{
     position: relative;
-    font-family: 'Helvetica';
-    font-style: normal;
     width: 700px;
     height: 500px;
     background: #874fb6;
@@ -22,7 +31,7 @@
     box-shadow: #742dad 2px 2px 2px, #742dad -2px -2px 2px;
 }
 
-.body-message{
+.body-wraper{
     position: relative;
     width: 100%;
     height: 380px;
@@ -76,43 +85,32 @@
     font-size: 28px;
     line-height: 24px;
     overflow: hidden;
-}
 
-.button:hover{
-    overflow: visible;
-}
+    &:hover{
+        overflow: visible;
 
-.button::before{
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    height: 40px;
-    width: 270px;
-    top: -15px;
-    left: 0px;
-    opacity: 0.7;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;;
-}
+        &::before{
+            opacity: 0.8;
+        }
 
-.button:hover::before{
-    opacity: 0.8;
-}
+        &::after{
+            opacity: 0.8;
+        }
+    }
 
-.button::after{
-    content: "";
-    position: absolute;
-    height: 70px;
-    width: 270px;
-    left: 0px;
-    top: 15px;
-    opacity: 0.7;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;;
-}
+    &::before{
+        @extend %lights-on-button;
+        height: 40px;
+        width: 270px;
+        top: -15px;
+    }
 
-.button:hover::after{
-    opacity: 0.8;
+    &::after{
+        @extend %lights-on-button;
+        height: 70px;
+        width: 270px;
+        top: 15px;
+    }
 }
 
 .button-container{
@@ -120,29 +118,29 @@
     margin-right: auto;
 }
 
-.close-button-container{
-    position: absolute;
-    right: 20px;
-    align-self: center;
-}
-
 .close-button{
     width: 70px;
     height: 70px;
-    position: relative;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    align-self: center;
     background: transparent;
     border: none;
-    font-size: 44px;
-    padding: 0px;
-}
 
-.close-button:hover:before{
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    background: radial-gradient(#fff6 0%, #fff0 60%)
+    &:hover::before{
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        background: radial-gradient(#fff6 0%, #fff0 60%)
+    }
+
+    img{
+        width: 70px;
+        height: 70px;
+    }
 }
 
 .confirmer{
@@ -151,29 +149,17 @@
 }
 
 .danger-button{
-    background: linear-gradient(180deg, rgba(221,65,65,1) 0%, rgba(221,65,65,1) 49%, rgba(214,59,59,1) 50%, rgba(214,59,59,1) 100%);
+    background: linear-gradient(180deg, rgba(221,65,65) 0%, rgba(221,65,65) 49%, rgba(214,59,59) 50%, rgba(214,59,59) 100%);
     background-blend-mode: overlay, normal;
-    box-shadow: 0px 3px 0px rgba(221,65,65, 0.747), 0px 4px 8px rgba(0, 0, 0, 0.14), 
-        0px 8px 10px rgba(0, 0, 0, 0.12), 0px 2px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 0px rgba(221,65,65, 0.7),
+        0px 4px 8px rgba(0, 0, 0, 0.1), 
+        0px 8px 10px rgba(0, 0, 0, 0.1),
+        0px 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 .double-lighter-container{
     position: absolute;
     width: 100%;
-}
-
-.short-lighter{
-    position: absolute;
-    width: 50%;
-    height: 10px;
-    top: -5px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-    transform: rotate(-180deg);
 }
 
 .medium-lighter{
@@ -195,11 +181,24 @@
     height: 80px;
     display: flex;
     justify-content: center;
+
+    &::after{
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 10px;
+        top: 73px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        mix-blend-mode: overlay;
+        opacity: 0.5;
+        transform: rotate(-180deg);
+    }
 }
 
-.header-message{
-    margin-left: auto;
-    margin-right: auto;
+.header-text{
     margin-top: auto;
     margin-bottom: auto;
     font-weight: 800;
@@ -207,7 +206,6 @@
     line-height: 72px;
     color: #ffe3fb;
     text-shadow: 0px -2px 1px #0005;
-    user-select: none;
 }
 
 .lighter-body{
@@ -263,32 +261,31 @@
     opacity: 0.5;
 }
 
-.message-text{
+.wraper-text{
     padding: 0px;
     margin-left: auto;
     margin-right: auto;
     font-size: 28px;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 2px 2px rgba(0, 0, 0, 0.12), 
-                0px 2px 4px rgba(0, 0, 0, 0.2);
-    user-select: none;
 }
 
 .restart-button{
-    margin-left: auto;
-    margin-right: auto;
     background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
         linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
     background-blend-mode: overlay, normal;
-    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.747), 0px 4px 8px rgba(0, 0, 0, 0.14), 
-        0px 8px 10px rgba(0, 0, 0, 0.12), 0px 2px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.7),
+        0px 4px 8px rgba(0, 0, 0, 0.1), 
+        0px 8px 10px rgba(0, 0, 0, 0.1),
+        0px 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 .success-button{
     background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
         linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
     background-blend-mode: overlay, normal;
-    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.747), 0px 4px 8px rgba(0, 0, 0, 0.14), 
-        0px 8px 10px rgba(0, 0, 0, 0.12), 0px 2px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.7),
+        0px 4px 8px rgba(0, 0, 0, 0.1), 
+        0px 8px 10px rgba(0, 0, 0, 0.1),
+        0px 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 .information{
@@ -308,7 +305,7 @@
     justify-content: center;
 }
 
-.smile{
+.result-img{
     position: absolute;
     top: -30px;
     width: 200px;
@@ -316,12 +313,3 @@
     background-size: 100%;
     border: none;
 }
-
-.bored{
-    position: absolute;
-    top: -30px;
-    width: 230px;
-    height: 230px;
-    background-size: 100%;
-    border: none;
-} 

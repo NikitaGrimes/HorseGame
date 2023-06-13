@@ -10,7 +10,7 @@ export class GameCell {
         [-2, -1],
     ]
 
-    private static _movesNumber: number = 0;
+    private static _movesNumber = 0;
 
     constructor(public lineNumber: number, public cellNumber: number, public isChecked: boolean = false, 
         public isCanMove: boolean = false, public isCurrent: boolean = false, public moveNumber?: number){

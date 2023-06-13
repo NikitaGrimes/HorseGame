@@ -4,7 +4,7 @@ import { GameCell } from "./game-cell";
 export class Game {
     cells: GameCell[][] = [];
     moveableCells: GameCell[] = [];
-    isFirstMove: boolean = true;
+    isFirstMove = true;
     currentCell?: GameCell;
     movesCell: GameCell[] = [];
     static readonly MAX_CELL_SIZE: number = 20;

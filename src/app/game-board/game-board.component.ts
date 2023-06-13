@@ -13,7 +13,7 @@ export class GameBoardComponent {
   @Output() openEndGame = new EventEmitter<FinishEvents>();
 
   makeMove(newCurrentCell: GameCell):void{
-    let result: FinishEvents | undefined = this.game.makeMove(newCurrentCell)
+    const result: FinishEvents | undefined = this.game.makeMove(newCurrentCell)
     if(result)
       this.openEndGame.emit(result);
   }

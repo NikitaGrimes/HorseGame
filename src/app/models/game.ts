@@ -19,7 +19,7 @@ export class Game {
       this.movesCell = [];
       return new Array<GameCell[]>(this.cellNumber)
         .fill(new Array<any>(this.cellNumber)
-          .fill(undefined))
+          .fill(null))
         .map((line, i) => line.map((_, j) => new GameCell(i, j)));
     }
     

@@ -16,7 +16,7 @@
     </div>
     <div class="game-board">
         <div class="game-line" *ngFor="let line of game.cells">
-          <div class="game-cell" *ngFor="let cell of line" (click)="makeMove(cell)" 
+          <div class="game-cell" *ngFor="let cell of line" tabindex="1" (keypress)="makeMove(cell)" (click)="makeMove(cell)" 
           [ngClass]="{'game-cell-can-move': cell.isCanMove}">
             <div class="game-item" [ngClass]="{'game-item-current': cell.isCurrent, 
             'game-item-checked': cell.isChecked, 'game-item-can-move': cell.isCanMove}">

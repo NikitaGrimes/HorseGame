@@ -2,7 +2,7 @@
     <div class="wraper-header">
         <p class="header-text text">{{finishEvent}}</p>
         <button class="button-close" (click) = "return()">
-            <img src="assets/images/cross-no-shape.svg" />
+            <img src="assets/images/cross-no-shape.svg" alt="X"/>
         </button>
     </div>
     <div class="wraper-body">
@@ -10,8 +10,8 @@
         </div>
         <div class="information">
             <div class="image-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
-                <img src="assets/images/laugh.svg" *ngIf="finishEvent === allFinishEvents.Win"/>
-                <img src="assets/images/bored.svg" *ngIf="finishEvent === allFinishEvents.Lose"/>
+                <img src="assets/images/laugh.svg" *ngIf="finishEvent === allFinishEvents.Win" alt=":)"/>
+                <img src="assets/images/bored.svg" *ngIf="finishEvent === allFinishEvents.Lose" alt=":("/>
             </div>
             <p class="information-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
             <p class="information-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>

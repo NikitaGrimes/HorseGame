@@ -1,57 +1,37 @@
 <div class="wraper" *ngIf="finishEvent">
-    <div class="header">
+    <div class="wraper-header">
         <p class="header-text text">{{finishEvent}}</p>
-        <button class="close-button" (click) = "return()">
+        <button class="button-close" (click) = "return()">
             <img src="assets/images/cross-no-shape.svg" />
         </button>
     </div>
-    <div class="double-lighter-container">
-        <div class="short-lighter">
-        </div>
-        <div class="medium-lighter">
-        </div>
-    </div>
-    <div class="body-wraper">
-        <div class="lighter-body">
-            <div class="upper-lighter-body">
-            </div>
-            <div class="left-lighter-body">
-            </div>
-            <div class="right-lighter-body">
-            </div>
+    <div class="wraper-body">
+        <div class="wraper-body-backlight">
         </div>
         <div class="information">
             <div class="image-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
-                <img class="result-img" src="assets/images/laugh.svg" *ngIf="finishEvent === allFinishEvents.Win"/>
-                <img class="result-img" src="assets/images/bored.svg" *ngIf="finishEvent === allFinishEvents.Lose"/>
+                <img src="assets/images/laugh.svg" *ngIf="finishEvent === allFinishEvents.Win"/>
+                <img src="assets/images/bored.svg" *ngIf="finishEvent === allFinishEvents.Lose"/>
             </div>
-            <p class="wraper-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
-            <p class="wraper-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>
-            <p class="wraper-text text" *ngIf="finishEvent === allFinishEvents.Restart">Are you sure?</p>
+            <p class="information-text text" *ngIf="finishEvent === allFinishEvents.Win">You are WINNER!</p>
+            <p class="information-text text" *ngIf="finishEvent === allFinishEvents.Lose">You lose!</p>
+            <p class="information-text text" *ngIf="finishEvent === allFinishEvents.Restart">Are you sure?</p>
         </div>
-        <div class="button-container" *ngIf="finishEvent === allFinishEvents.Lose || finishEvent === allFinishEvents.Win">
-            <button class="button text restart-button" *ngIf="finishEvent === allFinishEvents.Lose" (click) = "restart()">
+        <div class="button-container">
+            <button class="button text button-restart" *ngIf="finishEvent === allFinishEvents.Lose" (click) = "restart()">
                 TRY AGAIN
             </button>
-            <button class="button text restart-button" *ngIf="finishEvent === allFinishEvents.Win" (click) = "restart()">
+            <button class="button text button-restart" *ngIf="finishEvent === allFinishEvents.Win" (click) = "restart()">
                 RESTART
             </button>
-        </div>
-        <div class="confirmer" *ngIf="finishEvent === allFinishEvents.Restart">
-            <button class="button text success-button" (click) = "restart()">
+            <button class="button text button-restart" *ngIf="finishEvent === allFinishEvents.Restart" (click) = "restart()">
                 YES
             </button>
-            <button class="button text danger-button" (click) = "return()">
+            <button class="button text button-danger" *ngIf="finishEvent === allFinishEvents.Restart" (click) = "return()">
                 NO
             </button>
         </div>
-        <div class="bottom-large-lighter">
-        </div>
     </div>
-    <div class="bottom-lighter-container">
-        <div class="message-lighter">
-        </div>
-    </div>
-    <div class="bottom-medium-lighet">
+    <div class="wraper-backlight">
     </div>
 </div>

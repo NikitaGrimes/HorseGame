@@ -1,22 +1,16 @@
 <div class="app-board">
     <div class="app-instrument">
-      <div class="cell-sizer">
+      <p class="cell-sizer">
         {{game.cellNumber}}x{{game.cellNumber}}
-      </div>
+      </p>
       <div class="instrument-container">
-        <div class="cell-sizer-button-container">
-          <button class="cell-sizer-button" (click)="incrementSize()"><span class="arrow">&#9650;</span></button>
-          <button class="cell-sizer-button" (click)="decrementSize()"><span class="arrow">&#9660;</span></button>
+        <div class="instrument-cell-sizer">
+          <button class="cell-sizer-button" (click)="incrementSize()"><span>&#9650;</span></button>
+          <button class="cell-sizer-button" (click)="decrementSize()"><span>&#9660;</span></button>
         </div>
         <div class="instrument-button-container">
-          <div>
-            <button class="button text back-button" type="button" (click)="makeStepBack()">STEP BACK</button>
-          </div>
-          <div>
-            <button class="button text reset-button" type="button" (click)="reset()">RESTART</button>
-          </div>
-          <!--<button type="button" (click)="onWin()">Press to Win</button>
-          <button type="button" (click)="onLose()">Press to Lose</button>-->
+          <button class="button text button-back" type="button" (click)="makeStepBack()">STEP BACK</button>
+          <button class="button text button-reset" type="button" (click)="reset()">RESTART</button>
         </div>
       </div>
     </div>

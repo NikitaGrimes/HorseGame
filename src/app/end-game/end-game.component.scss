@@ -1,10 +1,36 @@
-%lights-on-button{
+$width-button: 270px;
+$height-button: 70px;
+
+%button-backlight{
     content: "";
     position: absolute;
     border-radius: 50%;
     left: 0px;
     opacity: 0.7;
     background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    mix-blend-mode: overlay;
+}
+
+%side-body-backlight{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 300px;
+    height: 800px;
+    top: -500px;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    mix-blend-mode: overlay;
+}
+
+%medium-backlight{
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 40%, #FFFFFF 60%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
 }
 
@@ -29,25 +55,21 @@
     margin-top: 200px;
     overflow: hidden;
     box-shadow: #742dad 2px 2px 2px, #742dad -2px -2px 2px;
+
+    &::after{
+        @extend %medium-backlight;
+        bottom: -1px;
+        opacity: 0.8;
+    }
 }
 
-.body-wraper{
-    position: relative;
-    width: 100%;
-    height: 380px;
-    background: #5a2dad;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-
-.bottom-large-lighter{
+.wraper-backlight{
     position: absolute;
     width: 70%;
     height: 200px;
     left: 0px;
     right: 0px;
-    bottom: -190px;
+    bottom: -130px;
     margin: auto;
     border-radius: 50%;
     background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
@@ -55,29 +77,77 @@
     opacity: 0.8;
 }
 
-.bottom-lighter-container{
+.wraper-header{
     position: relative;
+    z-index: 6;
     width: 100%;
-    top: 2px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+
+    &::after{
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 10px;
+        top: 73px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        mix-blend-mode: overlay;
+        opacity: 0.5;
+        transform: rotate(-180deg);
+    }
 }
 
-.bottom-medium-lighet{
+.wraper-body{
+    position: relative;
+    width: 100%;
+    height: 380px;
+    background: #5a2dad;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    &::before{
+        @extend %medium-backlight;
+        top: -2px;
+    }
+
+    &::after{
+        @extend %medium-backlight;
+        bottom: -2px;
+        opacity: 0.5;
+    }
+}
+
+.wraper-body-backlight{
     position: absolute;
-    width: 80%;
-    height: 2px;
-    left: 0px;
-    right: 0px;
-    bottom: -1px;
-    margin: auto;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 40%, #FFFFFF 60%, rgba(255, 255, 255, 0) 100%);
+    width: 140%;
+    height: 150px;
+    left: -20%;
+    top: -75px;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
     mix-blend-mode: overlay;
-    opacity: 0.8;
+    opacity: 0.5;
+    transform: rotate(-180deg);
+
+    &::before{
+        @extend %side-body-backlight;
+        left: -70px;
+    }
+
+    &::after{
+        @extend %side-body-backlight;
+        right: -70px;
+    }
 }
 
 .button{
     position: relative;
-    width: 270px;
-    height: 70px;
+    width: $width-button;
+    height: $height-button;
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -99,26 +169,45 @@
     }
 
     &::before{
-        @extend %lights-on-button;
-        height: 40px;
-        width: 270px;
+        @extend %button-backlight;
+        height: $height-button - 30px;
+        width: $width-button;
         top: -15px;
     }
 
     &::after{
-        @extend %lights-on-button;
-        height: 70px;
-        width: 270px;
+        @extend %button-backlight;
+        height: $height-button;
+        width: $width-button;
         top: 15px;
     }
 }
 
 .button-container{
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.close-button{
+.button-restart{
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
+        linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
+    background-blend-mode: overlay, normal;
+    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.7),
+        0px 4px 8px rgba(0, 0, 0, 0.1), 
+        0px 8px 10px rgba(0, 0, 0, 0.1),
+        0px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-danger{
+    background: linear-gradient(180deg, rgba(221,65,65) 0%, rgba(221,65,65) 49%, rgba(214,59,59) 50%, rgba(214,59,59) 100%);
+    background-blend-mode: overlay, normal;
+    box-shadow: 0px 3px 0px rgba(221,65,65, 0.7),
+        0px 4px 8px rgba(0, 0, 0, 0.1), 
+        0px 8px 10px rgba(0, 0, 0, 0.1),
+        0px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-close{
     width: 70px;
     height: 70px;
     position: absolute;
@@ -143,61 +232,6 @@
     }
 }
 
-.confirmer{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.danger-button{
-    background: linear-gradient(180deg, rgba(221,65,65) 0%, rgba(221,65,65) 49%, rgba(214,59,59) 50%, rgba(214,59,59) 100%);
-    background-blend-mode: overlay, normal;
-    box-shadow: 0px 3px 0px rgba(221,65,65, 0.7),
-        0px 4px 8px rgba(0, 0, 0, 0.1), 
-        0px 8px 10px rgba(0, 0, 0, 0.1),
-        0px 2px 20px rgba(0, 0, 0, 0.2);
-}
-
-.double-lighter-container{
-    position: absolute;
-    width: 100%;
-}
-
-.medium-lighter{
-    position: absolute;
-    width: 80%;
-    height: 2px;
-    top: -2px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 40%, #FFFFFF 60%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-}
-
-.header{
-    position: relative;
-    z-index: 6;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-
-    &::after{
-        content: "";
-        position: absolute;
-        width: 50%;
-        height: 10px;
-        top: 73px;
-        left: 0px;
-        right: 0px;
-        margin: auto;
-        background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-        mix-blend-mode: overlay;
-        opacity: 0.5;
-        transform: rotate(-180deg);
-    }
-}
-
 .header-text{
     margin-top: auto;
     margin-bottom: auto;
@@ -208,91 +242,18 @@
     text-shadow: 0px -2px 1px #0005;
 }
 
-.lighter-body{
-    position: absolute;
-    width: 100%;
-    top: 0;
-}
-
-.upper-lighter-body{
-    position: absolute;
-    width: 140%;
-    height: 150px;
-    left: -20%;
-    top: -75px;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-    transform: rotate(-180deg);
-}
-
-.left-lighter-body{
-    position: absolute;
-    width: 300px;
-    height: 800px;
-    left: -200px;
-    top: -230px;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-}
-
-.right-lighter-body{
-    position: absolute;
-    width: 300px;
-    height: 800px;
-    right: -200px;
-    top: -230px;
-    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-}
-
-.message-lighter{
-    position: absolute;
-    width: 80%;
-    height: 2px;
-    top: -2px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 40%, #FFFFFF 60%, rgba(255, 255, 255, 0) 100%);
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-}
-
-.wraper-text{
-    padding: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 28px;
-}
-
-.restart-button{
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
-        linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
-    background-blend-mode: overlay, normal;
-    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.7),
-        0px 4px 8px rgba(0, 0, 0, 0.1), 
-        0px 8px 10px rgba(0, 0, 0, 0.1),
-        0px 2px 20px rgba(0, 0, 0, 0.2);
-}
-
-.success-button{
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), 
-        linear-gradient(180deg, rgba(38,93,199,1) 0%, rgba(38,93,199,1) 49%, rgba(38,82,199,1) 50%, rgba(38,82,199,1) 100%);
-    background-blend-mode: overlay, normal;
-    box-shadow: 0px 3px 0px rgba(53, 93, 204, 0.7),
-        0px 4px 8px rgba(0, 0, 0, 0.1), 
-        0px 8px 10px rgba(0, 0, 0, 0.1),
-        0px 2px 20px rgba(0, 0, 0, 0.2);
-}
-
 .information{
     height: 210px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.information-text{
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 28px;
 }
 
 .image-container{
@@ -303,13 +264,13 @@
     margin-right: auto;
     display: flex;
     justify-content: center;
-}
 
-.result-img{
-    position: absolute;
-    top: -30px;
-    width: 200px;
-    height: 200px;
-    background-size: 100%;
-    border: none;
+    img{
+        position: absolute;
+        top: -30px;
+        width: 200px;
+        height: 200px;
+        background-size: 100%;
+        border: none;
+    }
 }

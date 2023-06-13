@@ -1,3 +1,8 @@
+@keyframes rotating {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 %circle{
     position: fixed;
     z-index: 1;
@@ -12,6 +17,7 @@
     top: 5%;
     background: linear-gradient(90deg, #FC00FF 0%, #00DBDE 100%);
     transform: rotate(-105deg);
+    animation: rotating 8s linear infinite;
 }
 
 .circle2{
@@ -21,4 +27,5 @@
     left: 65%;
     top: 65%;
     background: linear-gradient(90deg, #E65C00 0%, #F9D423 100%);
+    animation: rotating 5s linear infinite;
 }
